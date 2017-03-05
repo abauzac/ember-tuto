@@ -1,7 +1,20 @@
 import { test } from 'qunit';
 import moduleForAcceptance from 'super-rentals/tests/helpers/module-for-acceptance';
+import Ember from "ember";
 
-moduleForAcceptance('Acceptance | list rentals');
+let stubMapsService = Ember.Service.extend({
+  getMapElement(){
+    return document.createElement("div");
+  }
+});
+
+moduleForAcceptance('Acceptance | list rentals', {
+  beforeEach(){
+    this.application.register("service:stubMaps", stubMapsService);
+    this.application.inject("component:location-map", "maps", "service:stubMaps" );
+  }
+});
+
 
 test('visiting /', function(assert) {
   visit('/');
@@ -23,7 +36,7 @@ test('should list available rentals.', function (assert) {
   visit("/");
   andThen(function(){
     assert.equal(find(".listing").length, 3, "should see 3 listing items");
-  })
+  });
 });
 
 test('should link to information about the company.', function (assert) {
@@ -31,7 +44,7 @@ test('should link to information about the company.', function (assert) {
   click('a:contains("About")');
   andThen(function(){
     assert.equal(currentURL(), '/about', "should navigate to about page");
-  })
+  });
 });
 
 test('should link to contact information.', function (assert) {
@@ -39,7 +52,7 @@ test('should link to contact information.', function (assert) {
   click('a:contains("Contact")');
   andThen(function(){
     assert.equal(currentURL(), '/contact', "should redirect to contact page");
-  })
+  });
 });
 
 test('should filter the list of rentals by city.', function (assert) {
@@ -49,7 +62,7 @@ test('should filter the list of rentals by city.', function (assert) {
   andThen(function(){
     assert.equal(find(".listing").length, 1, "should show 1 listing item");
     assert.equal(find(".listing .location:contains('Seattle')").length, 1, "should contains 'seattle' item");
-  })
+  });
 });
 
 test('should show details for a specific rental', function (assert) {
@@ -59,5 +72,5 @@ test('should show details for a specific rental', function (assert) {
     assert.equal(currentURL(), '/rentals/grand-old-mansion', 'should navigate to show route');
     assert.equal(find('.show-listing h2').text(), "Grand Old Mansion", 'should list rental title');
     assert.equal(find('.description').length, 1, 'should list a description of the property');
-  })
+  });
 });
