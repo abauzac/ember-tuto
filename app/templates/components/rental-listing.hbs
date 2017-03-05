@@ -9,6 +9,7 @@
         <span>Owner:</span> {{rental.owner}}
     </div>
     <div class="detail type">
+        <!-- helper rental-property-type -->
         <span>Type:</span> {{rental-property-type rental.type}} - {{rental.type}}
     </div>
     <div class="detail location">
@@ -17,4 +18,6 @@
     <div class="detial bedrooms">
         <span>Number of bedrooms:</span> {{rental.bedrooms}}
     </div>
+    <!-- component location-map -->
+    {{location-map location=rental.city}}
 </article>

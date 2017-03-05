@@ -32,11 +32,11 @@ test("should initiallly load all listings", function (assert){
       {{/each}}
     </ul>
   {{/list-filter}}
-  `)
+  `);
 
   return wait().then(() => {
     assert.equal(this.$(".city").length, 3);
-    assert.equal(this.$(".city").first().text().trim(), "San Francisco")
+    assert.equal(this.$(".city").first().text().trim(), "San Francisco");
   })
 
 })
@@ -63,7 +63,7 @@ test("should update with matching lsitsing", function(assert){
       {{/each}}
     </ul>
   {{/list-filter}}
-  `)
+  `);
 
   this.$(".list-filter input").val("San").keyup();
 

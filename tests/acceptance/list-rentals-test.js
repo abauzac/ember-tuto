@@ -7,7 +7,7 @@ test('visiting /', function(assert) {
   visit('/');
 
   andThen(function() {
-    assert.equal(currentURL(), '/');
+    assert.equal(currentURL(), '/rentals');
   });
 });
 
@@ -15,14 +15,14 @@ test('visiting /', function(assert) {
 test('should redirect to rentals route', function (assert) {
   visit("/");
   andThen(function(){
-    assert.equal(currentURL(), "/rentals", "should redirect automaticaly to /rentals route")
+    assert.equal(currentURL(), "/rentals", "should redirect automaticaly to /rentals route");
   });
 });
 
 test('should list available rentals.', function (assert) {
   visit("/");
   andThen(function(){
-    assert.equal(find(".listing").length, 3, "should see 3 listing items")
+    assert.equal(find(".listing").length, 3, "should see 3 listing items");
   })
 });
 
