@@ -37,9 +37,9 @@ test("should initiallly load all listings", function (assert){
   return wait().then(() => {
     assert.equal(this.$(".city").length, 3);
     assert.equal(this.$(".city").first().text().trim(), "San Francisco");
-  })
+  });
 
-})
+});
 
 test("should update with matching lsitsing", function(assert){
   // stub event 

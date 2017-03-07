@@ -9,7 +9,7 @@ let MapUtilStub = Ember.Object.extend({
     this.assert.ok(location, "createMap called with location");
     return DUMMY_ELEM;
   }
-})
+});
 
 moduleFor('service:maps', 'Unit | Service | maps', {
   // Specify the other units that are required for this test.
